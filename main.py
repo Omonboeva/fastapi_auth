@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from users.router import router as user_router
 from database import Base, engine
-from users.models import User
+from users.models import User, TokenBlacklist  # TokenBlacklist qo'shildi
+from users.router import router as user_router
 
 Base.metadata.create_all(bind=engine)
 

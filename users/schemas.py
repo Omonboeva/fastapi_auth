@@ -34,5 +34,36 @@ class LoginSchema(BaseModel):
         }
     }
 
-# class Settings(BaseModel):
-#     authjwt_secret_key: str = "f9a66e677041e94b29df770d56979cf3178504f792c15a5da9511a4ea9064fa8"
+
+class ProfileUpdateSchema(BaseModel):
+    first_name: Optional[str] = None
+    email: Optional[EmailStr] = None
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "first_name": "Nargiza",
+                "email": "new_email@gmail.com"
+            }
+        }
+    }
+
+
+class PasswordUpdateSchema(BaseModel):
+    old_password: str
+    new_password: str
+    confirm_password: str
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "old_password": "password123",
+                "new_password": "newpassword456",
+                "confirm_password": "newpassword456"
+            }
+        }
+    }
+
+
+class RefreshTokenSchema(BaseModel):
+    refresh_token: str
